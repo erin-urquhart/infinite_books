@@ -2,6 +2,15 @@
 # yarn lockfile v1
 
 
+"@activeadmin/activeadmin@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@activeadmin/activeadmin/-/activeadmin-2.11.0.tgz#b6cd9ba3e1d6658ec91593481a636f2686fb086b"
+  integrity sha512-xuPZf5hM87nm/Z0MPZ4qKeco3oia2uJc5Zznky5tFCN8WgGQPqvaCaJ5JbgvqVIOYGUIwS4b6U7hHWlZDK0fyw==
+  dependencies:
+    jquery "^3.4.1"
+    jquery-ui "^1.12.1"
+    jquery-ujs "^1.2.2"
+
 "@ampproject/remapping@^2.1.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.1.2.tgz#4edca94973ded9630d20101cd8559cedb8d8bd34"
@@ -950,6 +959,20 @@
   dependencies:
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
+
+"@rails/actiontext@^6.1.5":
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/@rails/actiontext/-/actiontext-6.1.5.tgz#29006cff520b72c6845f474540a9ea142eae6380"
+  integrity sha512-V88uyueaL4VeU0u0P3GiuM0vSBYW3pluYyI7jMmZKWfGZKCspmRLDaJE+30Bx4h3ZQJcRrOCFoTU8hK0cFmCsw==
+  dependencies:
+    "@rails/activestorage" "^6.0.0"
+
+"@rails/activestorage@^6.0.0":
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/@rails/activestorage/-/activestorage-6.1.5.tgz#a43929573b2ffae54857ffa3b7ac1988af42b681"
+  integrity sha512-7L0eWqrguZIyvfPOpVoZRChuIgxbpBdwdVtprT6wrl5rUAbdyHr6AZczl1yS+5d6nBV0TqpVLaB1sGxi2aMbCQ==
+  dependencies:
+    spark-md5 "^3.0.0"
 
 "@rails/webpacker@5.4.3":
   version "5.4.3"
@@ -3819,6 +3842,23 @@ jest-worker@^26.5.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
+jquery-ui@^1.12.1:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.13.1.tgz#d0b7a42e73a04c31bb5706adf86f6f8942f64eaa"
+  integrity sha512-2VlU59N5P4HaumDK1Z3XEVjSvegFbEOQRgpHUBaB2Ak98Axl3hFhJ6RFcNQNuk9SfL6WxIbuLst8dW/U56NSiA==
+  dependencies:
+    jquery ">=1.8.0 <4.0.0"
+
+jquery-ujs@^1.2.2:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/jquery-ujs/-/jquery-ujs-1.2.3.tgz#dcac6026ab7268e5ee41faf9d31c997cd4ddd603"
+  integrity sha512-59wvfx5vcCTHMeQT1/OwFiAj+UffLIwjRIoXdpO7Z7BCFGepzq9T9oLVeoItjTqjoXfUrHJvV7QU6pUR+UzOoA==
+
+"jquery@>=1.8.0 <4.0.0", jquery@^3.4.1:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
+  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
+
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -6148,6 +6188,11 @@ source-map@~0.7.2:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ==
 
+spark-md5@^3.0.0:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.2.tgz#7952c4a30784347abcee73268e473b9c0167e3fc"
+  integrity sha512-wcFzz9cDfbuqe0FZzfi2or1sgyIrsDwmPwfZC4hiNidPdPINjeUwNfv5kldczoEAcjl9Y1L3SM7Uz2PUEQzxQw==
+
 spdy-transport@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/spdy-transport/-/spdy-transport-3.0.0.tgz#00d4863a6400ad75df93361a1608605e5dcdcf31"
@@ -6509,6 +6554,11 @@ toidentifier@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.1.tgz#3be34321a88a820ed1bd80dfaa33e479fbb8dd35"
   integrity sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==
+
+trix@^2.0.0-alpha.1:
+  version "2.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/trix/-/trix-2.0.0-alpha.1.tgz#ac6bb38b68354371bd7bb9ade2eddf7fb9e28a16"
+  integrity sha512-/b6dnpNFfSJwqa9tlYu7vB1NN7KaUrlCkPanz9Esflw3nuT8BuBYF2TGNJLyKfj00Rr0YlDBESRihkJA7riBSw==
 
 ts-pnp@^1.1.6:
   version "1.2.0"

@@ -1,0 +1,24 @@
+<div class="column is-one-third">
+  <% if book.image.present? %>
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <%= image_tag book.image.variant(resize_to_limit: [285, 250]).processed %>
+      </figure>
+    </div>
+  <% end %>
+  <div class="card book">
+    <div class="card-content">
+    <p class="title is-4">
+      <%= link_to book.name, book %>
+    </p>
+    <ul>
+      <li>
+        <strong>Author:</strong> <%= book.author %>
+      </li>
+      <li>
+        <strong>Price:</strong> <%= book.price_cents / 100.0 %>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>
