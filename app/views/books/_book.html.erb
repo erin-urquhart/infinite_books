@@ -1,8 +1,8 @@
 <div class="column is-two-fifths">
   <% if book.image.present? %>
     <div class="card-image">
-      <figure class="image is-4by3">
-        <%= image_tag book.image.variant(resize_to_limit: [550, 900]).processed %>
+      <figure class="image is-3by4">
+        <%= image_tag book.image.variant(resize_to_limit: [350, 800]).processed %>
       </figure>
     </div>
   <% end %>
@@ -16,9 +16,10 @@
         <strong>Author:</strong> <%= book.author %>
       </li>
       <li>
-        <strong>Price:</strong> <%= book.price_cents / 100.0 %>
+        <strong>Price: $</strong><%= book.price_cents / 100.0 %>
       </li>
     </ul>
     </div>
   </div>
 </div>
+
