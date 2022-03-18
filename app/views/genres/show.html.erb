@@ -1,0 +1,11 @@
+
+  <div>
+    <p>
+    <strong>
+      <% @genrebooks.each do |book|%>
+        <p><%= link_to book.name, book %></p>
+
+      <% end %>
+    </strong>
+    </p>
+  </div>

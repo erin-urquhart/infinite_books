@@ -1,0 +1,22 @@
+
+<div class="columns mt-4 p-3 has-background-primary-light">
+  <%= render @book %>
+  <div class="column">
+    <div>
+      <strong>
+        <% @bookgenres.each do |genre|%>
+         / <%= link_to genre.name, genre %>
+        <% end %>
+      </strong>
+      <br>
+      <p><%= @book.description%></p>
+      <br>
+      <strong>Publication Year: </strong>
+      <p><%= @book.publication_year%></p>
+      <strong>Publisher: </strong>
+      <p><%= @book.publisher%></p>
+      <strong>ISBN: </strong>
+      <p><%= @book.isbn%></p>
+    </div>
+  </div>
+</div>
