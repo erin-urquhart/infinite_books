@@ -1,4 +1,12 @@
+<div class="searchbar">
   <h1 class="title is-3 m-2 py-4">Our Current Books</h1>
+  <h4 class="title is-5 m-2">Search our books:</h4>
+  <%= form_tag(books_path, method: :get) do %>
+    <%= text_field_tag(:search, params[:search], class:"input is-normal is-info ml-2") %>
+    <%# <%= select_tag :genre, options_from_collection_for_select(@genre, 'id', 'name') %>
+    <%= submit_tag ("Search"), class:"button is-dark" %>
+  <% end %>
+</div>
 <div class="columns">
   <%= render partial: 'book',
             collection: @books %>
