@@ -1,23 +1,26 @@
 <header>
-  <nav class="navbar is-dark is-spaced" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-dark is-spaced has-shadow" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item">
         <%= image_tag "icon-book.png", alt: "menu icon"%>
       </a>
     </div>
-    <div id="navbar" class="navbar-menu">
-      <div class="navbar-start">
+    <div id="navbar" class="navbar-menu is-dark is-active">
+      <div class="navbar-start is-dark">
         <%= link_to "Home", root_path, class: "navbar-item"%>
         <%= link_to "Books", books_path, class: "navbar-item"%>
         <%= link_to "Genres", genres_path, class: "navbar-item"%>
       </div>
     </div>
-    <% if current_user %>
-      <p>Currently signed in as: <%= current_user.email%></p>
-      <%= link_to "Sign Out", destroy_user_session_path, method: :delete%>
-    <% else %>
-      <%= link_to "Sign Up", new_user_registration_path%>
-      <%= link_to "Sign In", new_user_session_path%>
-    <% end %>
+    <div class="">
+      <% if current_user %>
+        <p class="is-size-7">Currently signed in as:<br> <%= current_user.username%></p>
+        <button class="button is-warning is-small is-rounded p-3 mb-1 mt-2"><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></button>
+      <% else %>
+        <button class="button is-primary is-light is-small is-rounded p-3 mb-1"><%= link_to "Sign Up", new_user_registration_path%></button>
+        <br>
+        <button class="button is-info is-light is-small is-rounded pr-3.5 mb-1"><%= link_to "Sign In", new_user_session_path%></button>
+      <% end %>
+    </div>
   </nav>
 </header>
