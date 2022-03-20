@@ -17,7 +17,7 @@
         <strong>Author:</strong> <%= book.author %>
       </li>
       <li>
-        <strong>Price: $</strong><%= book.price_cents / 100.0 %>
+        <strong>Price: </strong><%= number_to_currency book.price_cents / 100.0 %>
       </li>
     </ul>
     </div>
