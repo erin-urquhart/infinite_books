@@ -12,6 +12,29 @@
         <%= link_to "Genres", genres_path, class: "navbar-item"%>
       </div>
     </div>
+    <% if cart.present? %>
+      <div class="dropdown is-hoverable pr-4">
+        <div class="dropdown-trigger">
+          <button class="button is-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+            Cart
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+          <div class="dropdown-content">
+            <div class="dropdown-item">
+              <sup><%= cart.size %></sup>
+                <ul>
+                  <% cart.each do |product| %>
+                    <li>
+                      <%= product.name %> <%= link_to '➖', cart_path(product), method: :delete %>
+                    </li>
+                  <% end %>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <div class="">
       <% if current_user %>
         <p class="is-size-7">Currently signed in as:<br> <%= current_user.username%></p>

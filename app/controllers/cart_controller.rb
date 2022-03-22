@@ -7,7 +7,7 @@ class CartController < ApplicationController
       book = Book.find(id)
 
       flash[:notice] = "#{book.name} added to cart."
-      redirect_to book_path
+      redirect_to books_path
     end
   end
 
@@ -18,6 +18,6 @@ class CartController < ApplicationController
     session[:shopping_cart].delete(id)
     book = Book.find(id)
     flash[:notice] = "#{book.name} removed from cart."
-    redirect_to book_path
+    redirect_to books_path
   end
 end
