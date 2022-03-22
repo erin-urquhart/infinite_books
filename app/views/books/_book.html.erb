@@ -17,9 +17,19 @@
         <strong>Author:</strong> <%= book.author %>
       </li>
       <li>
-        <strong>Price: $</strong><%= book.price_cents / 100.0 %>
+        <strong>Price: </strong><%= number_to_currency book.price_cents / 100.0 %>
       </li>
     </ul>
+    <% if cart.include?(book) %>
+      <%= button_to cart_path(book), method: :delete do%>
+      ➖Remove from cart
+    <% end %>
+    <% else %>
+      <%= form_with url: cart_index_path, method: :post do %>
+      <%= hidden_field_tag(:id, book.id) %>
+      <%= button_tag 'Add to Cart' %>
+    <% end %>
+    <% end %>
     </div>
   </div>
 </div>
