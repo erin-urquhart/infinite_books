@@ -13,20 +13,19 @@
       </div>
     </div>
     <% if cart.present? %>
-      <div class="dropdown is-hoverable pr-4">
+      <div class="dropdown is-hoverable pr-5">
         <div class="dropdown-trigger">
           <button class="button is-light" aria-haspopup="true" aria-controls="dropdown-menu4">
             Cart
           </button>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+        <div class="dropdown-menu min-width" id="dropdown-menu" role="menu">
           <div class="dropdown-content">
             <div class="dropdown-item">
-              <sup><%= cart.size %></sup>
                 <ul>
-                  <% cart.each do |product| %>
+                  <% cart.each do |book| %>
                     <li>
-                      <%= product.name %> <%= link_to '➖', cart_path(product), method: :delete %>
+                      <%= book.name %> <%= button_to 'Remove', cart_path(book), method: :delete%>
                     </li>
                   <% end %>
                 </ul>
