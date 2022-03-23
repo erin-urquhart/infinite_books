@@ -19,16 +19,18 @@
             Cart
           </button>
         </div>
-        <div class="dropdown-menu min-width" id="dropdown-menu" role="menu">
-          <div class="dropdown-content">
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content m-1">
             <div class="dropdown-item">
                 <ul>
                   <% cart.each do |book| %>
-                    <li>
-                      <%= book.name %> <%= button_to 'Remove', cart_path(book), method: :delete%>
+                    <li class="pb-2">
+                      <span class="mr-3"><%= book.name %></span> <%= button_to 'Remove', cart_path(book), method: :delete, class: 'button is-light is-small is-pulled-right ml-3'%>
                     </li>
+                    <hr class="dropdown-divider">
                   <% end %>
                 </ul>
+                <button class="button is-dark mt-2">Buy Now</button>
             </div>
           </div>
         </div>
