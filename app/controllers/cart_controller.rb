@@ -19,7 +19,6 @@ class CartController < ApplicationController
   end
 
   def show
-
   end
 
   # DELETE /cart/:id

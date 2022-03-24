@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :books, only: %i[index show]
+  resources :books, only: [:index, :show] do
+    collection do
+      get "search"
+    end
+  end
   resources :genres, only: %i[index show]
   resources :cart, only: %i[create show destroy]
   scope "checkout" do
