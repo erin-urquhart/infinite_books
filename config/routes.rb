@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :books, only: %i[index show]
   resources :genres, only: %i[index show]
-  resources :cart, only: %i[create destroy]
+  resources :cart, only: %i[create show destroy]
   scope "checkout" do
     post "create", to: "checkout#create", as: "checkout_create"
     get "success", to: "checkout#success", as: "checkout_success"

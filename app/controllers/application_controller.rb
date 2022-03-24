@@ -3,10 +3,9 @@ class ApplicationController < ActionController::Base
   helper_method :cart
 
   private
-  # this will initialize the visit counter to zero for new users
   def initialize_session
-    # initialize the visit counter
-    session[:shopping_cart] ||= [] # empty arry of product IDs
+    # initialize the cart
+    session[:shopping_cart] ||= [][] # empty arry of product IDs
   end
 
   def cart

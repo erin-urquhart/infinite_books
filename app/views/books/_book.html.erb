@@ -20,15 +20,15 @@
         <strong>Price: </strong><%= number_to_currency book.price_cents / 100.0 %>
       </li>
     </ul>
+      <%= form_with url: cart_index_path, method: :post do %>
+      <%= hidden_field_tag(:id, book.id) %>
+      <%= number_field_tag 'quantity', min='1'%>
+      <%= button_tag 'Add to Cart', class: 'button is-dark mt-2' %>
+      <% end %>
     <% if cart.include?(book) %>
       <%= button_to cart_path(book), method: :delete, class: 'button is-dark mt-2' do%>
       ➖Remove from cart
-    <% end %>
-    <% else %>
-      <%= form_with url: cart_index_path, method: :post do %>
-      <%= hidden_field_tag(:id, book.id) %>
-      <%= button_tag 'Add to Cart', class: 'button is-dark mt-2' %>
-    <% end %>
+      <% end %>
     <% end %>
     </div>
   </div>
