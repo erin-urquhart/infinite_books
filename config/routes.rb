@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get "search"
     end
   end
+
   resources :genres, only: %i[index show]
   resources :cart, only: %i[create show destroy]
   scope "checkout" do

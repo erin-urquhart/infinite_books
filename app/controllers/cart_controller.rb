@@ -1,6 +1,6 @@
 class CartController < ApplicationController
   def create
-    logger.debug("Adding #{params[:id]} to cart. ")
+    item = { id: params[:id].to_i, quantity}
     id = params[:id].to_i
     quantity = params[:quantity].to_i
     if session[:shopping_cart].include?(id)
