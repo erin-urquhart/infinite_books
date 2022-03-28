@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
 
   def cart
     # retreive a collection of products from a collection
-      Book.find(session[:shopping_cart])
+    id_list = []
+    session[:shopping_cart].each do |item|
+      id_list << item['id']
+    end
+    Book.find(id_list)
   end
 end

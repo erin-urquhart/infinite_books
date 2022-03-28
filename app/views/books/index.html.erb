@@ -2,17 +2,17 @@
   <h1 class="title is-3 m-2 py-4">Our Current Books</h1>
   <h4 class="title is-5 m-2">Search our books:</h4>
   <%= form_with(url: search_books_path, method: :get, local: true) do |f| %>
-    <div class="columns is-1 is-centered">
+    <div class="columns is-1">
     <div class="column is-one-fifth is-centered">
     <%= f.text_field :keywords, :class=>"input is-rounded", placeholder: "Search"%>
     </div>
     <div class="dropdown pt-3 pl-2">
     <div class="select">
-    <%= f.collection_select :genre_id, Genre.order(:id), :id, :name, :prompt => true%>
+    <%= f.collection_select :genre, Genre.order(:id), :id, :name, :prompt => true%>
     </div>
     </div>
     </div>
-    <%= f.submit "Search", :class=>"button is-info mt-3" %>
+    <%= f.submit "Search", :class=>"button is-info mb-4" %>
   <% end %>
   </div>
 <div class="columns">
