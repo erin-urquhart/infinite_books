@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_29_145310) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_29_162204) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -135,6 +135,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_145310) do
     t.decimal "taxes"
     t.decimal "total"
     t.string "payment_id"
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -155,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_145310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "province_id"
+    t.text "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["province_id"], name: "index_users_on_province_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -166,5 +169,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_145310) do
   add_foreign_key "book_genres", "genres"
   add_foreign_key "item_orders", "books"
   add_foreign_key "item_orders", "orders"
+  add_foreign_key "orders", "users"
   add_foreign_key "users", "provinces"
 end

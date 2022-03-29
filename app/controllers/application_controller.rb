@@ -21,5 +21,7 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:province_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:address])
+
   end
 end

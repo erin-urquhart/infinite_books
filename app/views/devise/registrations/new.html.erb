@@ -27,6 +27,11 @@
       <%= f.collection_select :province_id, Province.order(:id), :id, :name%>
     </div>
 
+    <div class="field">
+      <%= f.label :address %><br />
+      <%= f.text_field :address, autocomplete: "address"%>
+    </div>
+
     <div class="actions">
       <%= f.submit "Sign up" %>
     </div>
