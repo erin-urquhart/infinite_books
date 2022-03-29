@@ -2,6 +2,7 @@ class CheckoutController < ApplicationController
   def list_items
     cart_items = []
     quantity = []
+    total = 0
     session[:shopping_cart].each do |b|
       quantity << b['quantity']
     end
@@ -9,11 +10,16 @@ class CheckoutController < ApplicationController
     taxes = (1 + province[:hst] + province[:gst] + province[:pst])
     counter = 0
     cart.each do |item|
+      total += ((item.price_cents)).to_i * quantity[counter]
       cart_items << {"name" => item.name, "description" => item.author,
-      "amount" => ((item.price_cents) * taxes).to_i,
-      "currency" => "cad", quantity: quantity[counter] }
+      "amount" => ((item.price_cents)).to_i,
+      "currency" => "cad", "quantity" => quantity[counter] }
       counter += 1
     end
+    cart_items << {"name" => "HST", "amount" => (total * province[:hst]).to_i, "currency" => "cad", "quantity" => 1}
+    cart_items << {"name" => "GST", "amount" => (total * province[:gst]).to_i, "currency" => "cad", "quantity" => 1}
+    cart_items << {"name" => "PST", "amount" => (total * province[:pst]).to_i, "currency" => "cad", "quantity" => 1}
+    puts cart_items
     return cart_items
   end
 
