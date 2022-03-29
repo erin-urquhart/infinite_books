@@ -1,4 +1,17 @@
 class CheckoutController < ApplicationController
+  def list_items
+    cart_items = []
+    province = Province.find(current_user.province_id)
+    taxes = (1 + province[:hst] + province[:gst] + province[:pst])
+    cart.each do |item|
+      cart_items << {"name" => item.name, "description" => item.description,
+      "amount" => ((item.price * 100) * taxes).to_i,
+      "currency" => "cad", adjustable_quantity: { enabled: true, minimum: 1,
+        maximum: 10 }, quantity: 1 }
+    end
+    return cart_items
+  end
+
   def create
     product = Book.find(params[:book_id])
 

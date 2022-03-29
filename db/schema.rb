@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_29_051156) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_29_145310) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -108,6 +108,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_051156) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "item_orders", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "book_id", null: false
+    t.integer "order_id", null: false
+    t.index ["book_id"], name: "index_item_orders_on_book_id"
+    t.index ["order_id"], name: "index_item_orders_on_order_id"
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity"
     t.integer "book_id"
@@ -118,11 +129,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_051156) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.text "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "subtotal"
+    t.decimal "taxes"
+    t.decimal "total"
+    t.string "payment_id"
   end
 
   create_table "provinces", force: :cascade do |t|
@@ -152,5 +164,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_051156) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "book_genres", "books"
   add_foreign_key "book_genres", "genres"
+  add_foreign_key "item_orders", "books"
+  add_foreign_key "item_orders", "orders"
   add_foreign_key "users", "provinces"
 end

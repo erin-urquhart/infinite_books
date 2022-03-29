@@ -1,7 +1,5 @@
 class CartController < ApplicationController
   def create
-    puts "START"
-    puts session[:shopping_cart]
     item = { id: params[:id].to_i, quantity: params[:quantity].to_i }
     id = params[:id].to_i
     quantity = params[:quantity].to_i
