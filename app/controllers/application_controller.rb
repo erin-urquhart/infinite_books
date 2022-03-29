@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :initialize_session
+  before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :cart
 
   private
@@ -15,5 +16,10 @@ class ApplicationController < ActionController::Base
       id_list << item['id']
     end
     Book.find(id_list)
+  end
+
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:province_id])
   end
 end

@@ -10,6 +10,7 @@ require "csv"
 BookGenre.destroy_all
 Book.destroy_all
 Genre.destroy_all
+#Province.destroy_all
 
 
 # provinces = Rails.root.join("db/provinces.csv")
