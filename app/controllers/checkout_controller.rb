@@ -42,6 +42,8 @@ class CheckoutController < ApplicationController
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     province = Province.find(current_user.province_id)
     taxes = (province[:hst] + province[:gst] + province[:pst])
+    subt = (@payment_intent.amount_received.to_d / 100 * taxes)
+    subtotal = (@payment_intent.amount_received.to_d / 100 - subt).round(2)
     order_status = if @session.payment_intent
                       "paid"
                     else
@@ -49,6 +51,7 @@ class CheckoutController < ApplicationController
                     end
     new_order = current_user.orders.create(
       total:      @payment_intent.amount_received.to_d / 100,
+      subtotal: subtotal,
       taxes:      taxes,
       payment_id: @session.payment_intent,
       status:     order_status
