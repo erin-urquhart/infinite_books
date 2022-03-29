@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'books#index'
   devise_for :users
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :genres, only: %i[index show]
   resources :cart, only: %i[create show destroy]
-  scope "checkout" do
+  scope "/checkout" do
     post "create", to: "checkout#create", as: "checkout_create"
     get "success", to: "checkout#success", as: "checkout_success"
     get "cancel", to: "checkout#cancel", as: "checkout_cancel"
