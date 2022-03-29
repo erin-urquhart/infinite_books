@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2022_03_20_200501) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_03_29_193142) do
+>>>>>>> order_checkout
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -108,9 +112,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_200501) do
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "line_items", force: :cascade do |t|
     t.integer "quantity"
     t.integer "product_id"
+=======
+  create_table "item_orders", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "book_id", null: false
+    t.integer "order_id", null: false
+    t.index ["book_id"], name: "index_item_orders_on_book_id"
+    t.index ["order_id"], name: "index_item_orders_on_order_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "book_id"
+>>>>>>> order_checkout
     t.integer "cart_id"
     t.integer "order_id"
     t.datetime "created_at", null: false
@@ -118,9 +139,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_200501) do
   end
 
   create_table "orders", force: :cascade do |t|
+<<<<<<< HEAD
     t.string "name"
     t.string "email"
     t.text "address"
+=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "subtotal"
+    t.decimal "taxes"
+    t.decimal "total"
+    t.string "payment_id"
+    t.integer "user_id", null: false
+    t.string "status"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
+    t.decimal "gst"
+    t.decimal "pst"
+    t.decimal "hst"
+>>>>>>> order_checkout
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -133,10 +173,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_200501) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.index ["email"], name: "index_users_on_email", unique: true
+=======
+    t.integer "province_id"
+    t.text "address"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["province_id"], name: "index_users_on_province_id"
+>>>>>>> order_checkout
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+<<<<<<< HEAD
+=======
+  add_foreign_key "book_genres", "books"
+  add_foreign_key "book_genres", "genres"
+  add_foreign_key "item_orders", "books"
+  add_foreign_key "item_orders", "orders"
+  add_foreign_key "orders", "users"
+  add_foreign_key "users", "provinces"
+>>>>>>> order_checkout
 end

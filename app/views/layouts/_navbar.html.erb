@@ -9,9 +9,37 @@
       <div class="navbar-start is-dark">
         <%= link_to "Home", root_path, class: "navbar-item"%>
         <%= link_to "Books", books_path, class: "navbar-item"%>
-        <%= link_to "Genres", genres_path, class: "navbar-item"%>
       </div>
     </div>
+    <% if cart.present? %>
+      <div class="dropdown is-hoverable pr-5">
+        <div class="dropdown-trigger">
+          <button class="button is-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+            Cart
+          </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+          <div class="dropdown-content m-1">
+            <div class="dropdown-item">
+                <ul>
+                  <% cart.each do |book| %>
+                    <li class="pb-2">
+                      <span class="mr-3"><%= book.name %></span>
+                      <%= button_to 'Remove', cart_path(book), method: :delete, class: 'button is-light is-small is-pulled-right ml-3'%>
+                    </li>
+                    <hr class="dropdown-divider">
+                  <% end %>
+                </ul>
+                <% if current_user %>
+                  <%= button_to "Proceed to Checkout", checkout_create_path, :class=>"button is-dark mt-4 p-5", method: :post, remote: true%>
+                <% else %>
+                  <button class="button is-dark mt-2"><%= link_to "Sign In", new_user_session_path%></button>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <div class="">
       <% if current_user %>
         <p class="is-size-7">Currently signed in as:<br> <%= current_user.username%></p>

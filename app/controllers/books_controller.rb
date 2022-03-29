@@ -2,15 +2,7 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @books = Book.order(:name).page params[:page]
-  end
 
-  def search
-    if params[:search].blank?
-      redirect_to books_path and return
-    else
-      @parameter = params[:search].downcase
-      @results = Book.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
-    end
   end
 
   def show
@@ -18,6 +10,19 @@ class BooksController < ApplicationController
     @bookgenres = Genre.select("books.id, genres.id, genres.name").joins(:books).where(
       "book_id = ?", @book.id.to_s
     )
+  end
+
+  def search
+    query = "%#{params[:keywords]}%"
+    genre = params[:genre_id].to_s
+    @books = if genre == ""
+                  Book.where("name LIKE ? or description LIKE ?", query,
+                                query).order("name").page(params[:page]).per(4)
+                else
+                  Book.where("name LIKE ? or description LIKE ?", query, query).where(
+                    "genre_id LIKE ?", genre
+                  ).order("name").page(params[:page]).per(4)
+                end
   end
 
   def book_params

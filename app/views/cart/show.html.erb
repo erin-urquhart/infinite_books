@@ -1,0 +1,14 @@
+<div class="columns mt-4 p-3 has-background-primary-light">
+  <div class="column">
+    <ul>
+    <% counter = 0 %>
+      <% @books.each do |book| %>
+        <li class="pb-2">
+          <span class="mr-3"><%= book.name %></span> <%= button_to 'Remove', cart_path(book), method: :delete, class: 'button is-light is-small is-pulled-right ml-3'%>
+          <p>Quantity: <%= @qty[counter] %></p>
+        </li>
+        <% counter += 1 %>
+      <% end %>
+    </ul>
+  </div>
+</div>
