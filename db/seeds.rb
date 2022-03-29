@@ -7,9 +7,23 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "csv"
 
+BookGenre.destroy_all
 Book.destroy_all
 Genre.destroy_all
-BookGenre.destroy_all
+
+
+# provinces = Rails.root.join("db/provinces.csv")
+# province_data = File.read(provinces)
+# province_list = CSV.parse(province_data, headers: true, encoding: "utf-8")
+
+# province_list.each do |p|
+#   new_province = Province.create(
+#     name: p["name"],
+#     gst:  p["gst"],
+#     pst:  p["pst"],
+#     hst:  p["hst"]
+#     )
+# end
 
 books_csv = File.read(Rails.root.join("db/books.csv"))
 books = CSV.parse(books_csv, headers: true, encoding: "utf-8")

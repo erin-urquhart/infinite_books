@@ -30,7 +30,11 @@
                     <hr class="dropdown-divider">
                   <% end %>
                 </ul>
-                <%= link_to 'Buy Now', cart_path(cart), class: 'button is-dark mt-2'%>
+                <% if current_user %>
+                  <%= link_to 'Buy Now', cart_path(cart), class: 'button is-dark mt-2'%>
+                <% else %>
+                  <button class="button is-dark mt-2"><%= link_to "Sign In", new_user_session_path%></button>
+                <% end %>
             </div>
           </div>
         </div>
