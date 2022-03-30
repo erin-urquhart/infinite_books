@@ -14,7 +14,7 @@
     <% if cart.present? %>
       <div class="dropdown is-hoverable pr-5">
         <div class="dropdown-trigger">
-          <button class="button is-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <button class="button is-light" aria-haspopup="true" aria-controls="dropdown-menu">
             Cart
           </button>
         </div>
@@ -27,13 +27,13 @@
                       <span class="mr-3"><%= book.name %></span>
                       <%= button_to 'Remove', cart_path(book), method: :delete, class: 'button is-light is-small is-pulled-right ml-3'%>
                     </li>
-                    <hr class="dropdown-divider">
+                    <li class="dropdown-divider"></li>
                   <% end %>
                 </ul>
                 <% if current_user %>
                   <%= button_to "Proceed to Checkout", checkout_create_path, :class=>"button is-dark mt-4 p-5", method: :post, remote: true%>
                 <% else %>
-                  <button class="button is-dark mt-2"><%= link_to "Sign In", new_user_session_path%></button>
+                  <%= link_to "Sign In", new_user_session_path, class: 'button is-dark mt-2'%>
                 <% end %>
             </div>
           </div>
@@ -43,11 +43,11 @@
     <div class="">
       <% if current_user %>
         <p class="is-size-7">Currently signed in as:<br> <%= current_user.username%></p>
-        <button class="button is-warning is-small is-rounded p-3 mb-1 mt-2"><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></button>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'button is-warning is-small is-rounded p-3 mb-1 mt-2'%>
       <% else %>
-        <button class="button is-primary is-light is-small is-rounded p-3 mb-1"><%= link_to "Sign Up", new_user_registration_path%></button>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'button is-primary is-light is-small is-rounded p-3 mb-1'%>
         <br>
-        <button class="button is-info is-light is-small is-rounded pr-3.5 mb-1"><%= link_to "Sign In", new_user_session_path%></button>
+        <%= link_to "Sign In", new_user_session_path, class: 'button is-info is-light is-small is-rounded pr-3.5 mb-1'%>
       <% end %>
     </div>
   </nav>

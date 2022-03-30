@@ -3,7 +3,7 @@
   <% if book.image.present? %>
     <div class="card-image">
       <figure class="image is-2by3">
-        <%= image_tag book.image.variant(resize_to_limit: [350, 800]).processed %>
+        <%= image_tag book.image.variant(resize_to_limit: [350, 800]).processed, alt: 'product' %>
       </figure>
     </div>
   <% end %>
@@ -21,8 +21,8 @@
       </li>
     </ul>
       <%= form_with url: cart_index_path, method: :post do %>
-      <%= hidden_field_tag(:id, book.id) %>
-      <%= number_field_tag 'quantity', min='1'%>
+      <%= hidden_field_tag(:id, book.id, {:id => "book_id_#{book.id}"}) %>
+      <%= number_field_tag 'quantity', min='1', {:id => "quantity_id_#{book.id}"}%>
       <%= button_tag 'Add to Cart', class: 'button is-dark mt-2' %>
       <% end %>
     <% if cart.include?(book) %>
